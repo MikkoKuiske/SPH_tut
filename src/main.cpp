@@ -14,10 +14,14 @@ using namespace std;
 
 void writefile(Calculation_area laskenta_alue);
 
+
+
 int main()
 {
+    //Create the calculation area by giving it borders
     Calculation_area laskenta_alue(ALUE_Y,ALUE_X);
 
+    //initialize particles for the area
     for (double y = 1; y < ALUE_Y;++y ) {
         for (double x = 1; x < ALUE_X;++x ) {
 
@@ -30,6 +34,29 @@ int main()
     writefile(laskenta_alue);
     laskenta_alue.print_all();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 void writefile(Calculation_area laskenta_alue) {
