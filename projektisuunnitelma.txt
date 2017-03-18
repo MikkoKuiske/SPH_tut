@@ -1,0 +1,29 @@
+Projekti Virtausohjelma
+
+Tekijät: Veikko, Petri, Joonas, Mikko
+
+Projektin kuvaus:
+Kehitetään SPH-ohjelma opiskelijoiden käyttöön ja kehitykseen. Tarkoituksena saada graafisella käyttöliittymällä toimiva alkeellinen virtauslaskentaohjelma 2-ulotteisena. 
+
+Aikataulusuunnitelma:
+- 2017_03_18: aloitus
+- 2017_03_23: työkalut kunnossa, partikkelit liikkuu, etsi mahdollista visualisointityökalua
+
+- 2017_09_01: mikko tarjoaa pizzat jos projekti valmis
+
+Projektin toteutus:
+- Tavataan kerran viikossa ja tehdään ohjelmaa eteenpäin 1-2h kerrallaan.
+- Laskentatyökalu koodataan C++ kielellä
+- GUI pythonilla tai muulla käyvällä
+- Kuvien / videon teko etsitään myöhemmin
+
+
+
+2017_03_18:
+- Projektin aloitus
+- Sovittiin työkaluista, aikataulusta, työvoimasta
+- Alustava työnjako:
+	Mikko: 		Virtauslaskut + koodaaminen
+	Joonas: 	GUI, burokratio ja sihteeröinti
+	Petri: 		koodaaminen
+	Veikko: 	Kuvankehitys

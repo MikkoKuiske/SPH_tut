@@ -40,3 +40,9 @@ double
 particle::get_y() {
 	return y_pos_;
 }
+
+void
+particle::liikuta_nopeudella(double nopeus_x, double nopeus_y, double aika) {
+    x_pos_ += nopeus_x*aika;
+    y_pos_ += nopeus_y*aika;
+}

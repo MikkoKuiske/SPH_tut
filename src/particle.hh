@@ -17,6 +17,7 @@ public:
     double get_x();
     double get_y();
 
+    void liikuta_nopeudella(double nopeus_x, double nopeus_y, double aika);
 
 
 
