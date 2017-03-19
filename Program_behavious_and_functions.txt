@@ -1,0 +1,40 @@
+Functions to do:
+
+1.	Particle initial positioning (=initializing calculation)
+2.	Write Datafile
+3.	Boundary conditions (=delete particles exiting calculation area)
+4. 	Density calculation for particles:
+		- Grouping
+		- Weighted_center
+		- Density average
+		- Move particles
+5.	Calculate acceleration
+6.	Calculate velocity
+7.	Move Particles according to velocity and acceleration
+
+
+
+
+Program behaviour plan:
+
+1. Initialize calculation
+	- Particle attributes (position, type etc.)
+	- Calculation area limits
+	- Timestep length
+	- Endtime
+	etc.
+2. Save initial positioning as time 0
+3. Begin Timeloop
+
+---- LOOP ----
+4. Check boundaries 				(function 3)
+5. Density correction 				(function 4)
+6. Calculate forces, acceleration, velocity 	(functions 5 & 6)
+7. Move particles				(function 7)
+8. Density correction
+9. Save datafile as time x 			(loop_round*timestep)
+--- LOOP END -----
+
+10. finish program
+
+
