@@ -1,5 +1,5 @@
-#ifndef CALCULATION_AREA_H
-#define CALCULATION_AREA_H
+#ifndef CALCULATION_AREA_HH
+#define CALCULATION_AREA_HH
 
 #include "particle.hh"
 
@@ -25,10 +25,4 @@ private:
     std::map<int,std::vector<particle>> particles_;
 };
 
-#endif // CALCULATION_AREA_H
-
-/*
-virtaus.out: main.o calculation_area.o particle.o
-	g++ -o ohjelma.out main.cpp calculation_area.cpp particle.cpp -I. -std=c++11
-
-*/
+#endif // CALCULATION_AREA_HH
