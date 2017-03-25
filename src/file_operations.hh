@@ -3,6 +3,6 @@
 
 #include "calculation_area.hh"
 
-void writefile(Calculation_area laskenta_alue);
+void writefile(Calculation_area laskenta_alue, int time);
 
 #endif

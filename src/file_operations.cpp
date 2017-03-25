@@ -1,16 +1,29 @@
 #include "file_operations.hh"
 
 #include <iostream>
+#include <iomanip>
 #include <fstream>
+#include <string> 
+#include <vector>
 
 using namespace std;
 
-void writefile(Calculation_area laskenta_alue) {
+void writefile(Calculation_area laskenta_alue, int time) {
     double x,y;
     int tyyppi;
 
+    //Format filename for "./data/datafile.xxxx.dat"; 
+    //where xxxx = current timestep
+    string time_as_string{std::to_string(time)};
+    stringstream temp_stream;
+    temp_stream << setw(4) << setfill('0') << time_as_string;
+
+    time_as_string = temp_stream.str();
+    string data_name = "./data/datafile" + time_as_string + ".dat";
+
+    //open datafile with dataname
     ofstream datafile;
-    datafile.open ("./data/datafile.dat");
+    datafile.open (data_name);
 
     for (auto mapiter : laskenta_alue.hae_alue()) {
         datafile <<"\"type "<< mapiter.first << "\"\n";
@@ -19,7 +32,7 @@ void writefile(Calculation_area laskenta_alue) {
             y = vekiter.get_y();
             datafile << x << " " << y << "\n";
         }
-        datafile << "\n\n";
     }
     datafile.close();
+
 }
