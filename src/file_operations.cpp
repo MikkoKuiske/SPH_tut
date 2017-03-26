@@ -32,6 +32,7 @@ void writefile(Calculation_area laskenta_alue, int time) {
             y = vekiter.get_y();
             datafile << x << " " << y << "\n";
         }
+        datafile << "\n\n";
     }
     datafile.close();
 
