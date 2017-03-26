@@ -24,5 +24,4 @@ int main()
     //write datafile with number data_timestep, where timestep a is number from 0001 to 9999
     writefile(laskenta_alue,timestep);
 
-
 }

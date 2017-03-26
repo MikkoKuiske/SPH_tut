@@ -5,12 +5,12 @@
 #include <fstream>
 #include <string> 
 #include <vector>
+#include <sstream>
 
 using namespace std;
 
 void writefile(Calculation_area laskenta_alue, int time) {
     double x,y;
-    int tyyppi;
 
     //Format filename for "./data/datafile.xxxx.dat"; 
     //where xxxx = current timestep
@@ -23,7 +23,7 @@ void writefile(Calculation_area laskenta_alue, int time) {
 
     //open datafile with dataname
     ofstream datafile;
-    datafile.open (data_name);
+    datafile.open(data_name);
 
     for (auto mapiter : laskenta_alue.hae_alue()) {
         datafile <<"\"type "<< mapiter.first << "\"\n";
