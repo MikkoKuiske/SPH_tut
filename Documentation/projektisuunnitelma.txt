@@ -27,3 +27,6 @@ Projektin toteutus:
 	Joonas: 	GUI, burokratio ja sihteeröinti
 	Petri: 		koodaaminen
 	Veikko: 	Kuvankehitys
+
+2017_03_26
+- Saatanan saatana
