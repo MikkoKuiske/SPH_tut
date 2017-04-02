@@ -20,8 +20,13 @@ int main()
     //initialize particles for the area
     laskenta_alue.initialize_calculation_area();
     //laskenta_alue.print_all();
+    writefile(laskenta_alue,timestep);
+
+    laskenta_alue.move_particles();
 
     //write datafile with number data_timestep, where timestep a is number from 0001 to 9999
-    writefile(laskenta_alue,timestep);
+    writefile(laskenta_alue,timestep+1);
+
+
 
 }
