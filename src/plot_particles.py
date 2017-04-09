@@ -25,7 +25,7 @@ def readfile(name):
     return x_wall, y_wall, x_water, y_water
 
 def main():
-    filename = "datafile0001.txt" #in the end, will be for-loop that reads all relevant files
+    filename = "../data/datafile0001.txt" #in the end, will be for-loop that reads all relevant files
     x_wall, y_wall, x_water, y_water = [], [], [], []
     x_wall, y_wall, x_water, y_water = readfile(filename)
     
@@ -41,7 +41,7 @@ def main():
     for i in range(len(x_water)):
         plt.plot(x_water[i],y_water[i],'bo')
     plt.axis([xmin,xmax,ymin,ymax])
-    plt.savefig("kuva.png")
+    plt.savefig("../data/kuva.png")
     plt.show()
     
 main()
