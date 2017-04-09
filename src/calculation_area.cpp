@@ -1,5 +1,6 @@
 #include "calculation_area.hh"
 #include "particle.hh"
+#include "parameters.hh"
 
 #include <iostream>
 #include <iomanip>
@@ -62,10 +63,9 @@ Calculation_area::move_particles(){
     vector<particle>::iterator itvek;
     map<int, vector<particle>>::iterator itmap;
 
-    for (itmap = particles_.begin(); itmap != particles_.end(); itmap++) {
-        //std::cout << mapiter.first << std::endl;
+    for (itmap = particles_.begin(); itmap != particles_.end(); ++itmap) {
         if(itmap->first == 200){
-            for (itvek = itmap->second.begin(); itvek != itmap->second.end(); itvek++){
+            for (itvek = itmap->second.begin(); itvek != itmap->second.end(); ++itvek){
                 cout << "moved:" << itmap->first << ": "<< itvek->get_x() << "->";
                 itvek->move_particle(10.0, 0.0, 20.0);
                 cout << itvek->get_x() << endl;
@@ -78,4 +78,22 @@ Calculation_area::move_particles(){
 std::map<int,std::vector<particle>>
 Calculation_area::hae_alue() {
     return particles_;
+}
+
+void
+Calculation_area::boundary_conditions(){
+    vector<particle>::iterator itvek;
+    map<int, vector<particle>>::iterator itmap;
+
+    for(itmap = particles_.begin(); itmap != particles_.end(); ++itmap){
+        if(itmap->first == 200){
+            for(itvek = itmap->second.begin(); itvek != itmap->second.end(); ++itvek){
+                if(itvek->get_x() > ALUE_X or itvek->get_x() < 0){
+                    itmap->second.erase(itvek);
+                    cout << "erased" << itvek->get_x() << endl;
+                }
+
+            }
+        }
+    }
 }

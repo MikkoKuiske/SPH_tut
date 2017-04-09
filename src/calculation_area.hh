@@ -19,6 +19,7 @@ public:
     void add_particle(particle to_add);				//adds a particle to calculation area (map)
     void print_all();								//prints all particles in calculation area
     void move_particles();                           //moves individual particle by updating it's location
+    void boundary_conditions();                      //Erases particle if particle is out of boundary lines
 
 private:
     int area_height_;

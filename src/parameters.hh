@@ -1,0 +1,8 @@
+#ifndef PARAMETERS_HH
+#define PARAMETERS_HH
+
+#define ALUE_Y 70
+#define ALUE_X 70
+#define SEINAN_PAKSUUS ALUE_Y/10
+
+#endif // PARAMETERS_HH

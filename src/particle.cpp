@@ -1,6 +1,5 @@
 #include "particle.hh"
 
-
 #include <iostream>
 #include <iomanip>
 #include <vector>

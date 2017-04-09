@@ -12,4 +12,5 @@ SOURCES += \
 HEADERS += \
     ../../src/calculation_area.hh \
     ../../src/file_operations.hh \
-    ../../src/particle.hh
+    ../../src/particle.hh \
+    ../../src/parameters.hh
