@@ -1,0 +1,18 @@
+2017_03_18:
+- Projektin aloitus
+- Sovittiin työkaluista, aikataulusta, työvoimasta
+- Alustava työnjako:
+	Mikko: 		Virtauslaskut + koodaaminen
+	Joonas: 	GUI, burokratio ja sihteeröinti
+	Petri: 		koodaaminen
+	Veikko: 	Kuvankehitys
+
+2017_03_26
+- Saatanan saatana
+
+2017_04_09
+- GIT:n käyttö
+- Petri: boundary condition (laskenta-alueen ulk.puolelta poistetaan partikkelit)
+- Veikko: kuvan luomista datasta (missä muodossa data?)
+- Joonas: dokumnettipohjien etsiminen
+- Mikko: GIT:n, SPH:n teoria
