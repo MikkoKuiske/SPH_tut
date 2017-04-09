@@ -19,20 +19,25 @@ void writefile(Calculation_area laskenta_alue, int time) {
     temp_stream << setw(4) << setfill('0') << time_as_string;
 
     time_as_string = temp_stream.str();
-    string data_name = "./data/datafile" + time_as_string + ".dat";
+    string data_name = "./data/datafile" + time_as_string + ".txt";
+    string tyyppi;
 
     //open datafile with dataname
     ofstream datafile;
     datafile.open(data_name);
 
     for (auto mapiter : laskenta_alue.hae_alue()) {
-        datafile <<"\"type "<< mapiter.first << "\"\n";
+        if (mapiter.first == 100)
+            tyyppi = "wall";
+        else
+            tyyppi = "water";
+
+        datafile <<"type "<< tyyppi << "\n";
         for (auto vekiter : mapiter.second) {
             x = vekiter.get_x();
             y = vekiter.get_y();
             datafile << x << " " << y << "\n";
         }
-        datafile << "\n\n";
     }
     datafile.close();
 
