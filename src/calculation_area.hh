@@ -18,7 +18,7 @@ public:
     void initialize_calculation_area();				//initializes particles to calculation area
     void add_particle(particle to_add);				//adds a particle to calculation area (map)
     void print_all();								//prints all particles in calculation area
-
+    void move_particles();                           //moves individual particle by updating it's location
 
 private:
     int area_height_;

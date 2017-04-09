@@ -36,9 +36,6 @@ Calculation_area::initialize_calculation_area() {
     }
 }
 
-
-
-
 void
 Calculation_area::add_particle(particle to_add) {
     if (particles_.find(to_add.get_type()) == particles_.end())
@@ -47,17 +44,36 @@ Calculation_area::add_particle(particle to_add) {
         particles_.at(to_add.get_type()).push_back(to_add);
 }
 
-
+/*
 void
 Calculation_area::print_all() {
 
     for (auto mapiter : particles_) {
         std::cout << mapiter.first << std::endl;
         for (auto vekiter : mapiter.second)
-            vekiter.tulosta();
+            vekiter.move_particle()
     }
 
 }
+*/
+
+void
+Calculation_area::move_particles(){
+    vector<particle>::iterator itvek;
+    map<int, vector<particle>>::iterator itmap;
+
+    for (itmap = particles_.begin(); itmap != particles_.end(); itmap++) {
+        //std::cout << mapiter.first << std::endl;
+        if(itmap->first == 200){
+            for (itvek = itmap->second.begin(); itvek != itmap->second.end(); itvek++){
+                cout << "moved:" << itmap->first << ": "<< itvek->get_x() << "->";
+                itvek->move_particle(10.0, 0.0, 20.0);
+                cout << itvek->get_x() << endl;
+        }
+    }
+  }
+}
+
 
 std::map<int,std::vector<particle>>
 Calculation_area::hae_alue() {
