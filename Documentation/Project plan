@@ -1,0 +1,28 @@
+Project Virtausohjelma
+
+Project leader: Mikko
+Project members: Veikko, Petri, Joonas
+
+Roles:
+- Mikko: project leader
+- Veikko: image processing
+- Petri: coder, public speaker
+- Joonas: document manager
+
+Project description:
+Developing SPH-software for student use and further development. The aim is a basic 2d SPH-software with a graphical user interface. 
+
+Software Specfication:
+Software name: Rippanus, Ripper of Anus, Legendary Software Creature
+
+Schedule:
+- 2017_03_18: initial meeting
+- 2017_09_01: final meeting (mikko offers pizza if project is finished)
+
+Work method for the project:
+- Meeting once a week (1-2h) where to porject is worked on
+
+Implementation of project:
+- calculation with c++
+- gui with python or similar
+- pictures/videos ẃill be worked on later
