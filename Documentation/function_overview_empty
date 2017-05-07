@@ -1,0 +1,24 @@
+#------------------------------------------------
+# <short overview of the function/script>
+#
+#	syntax: output1 = exampleFuntion(param1,param2)
+#
+#	input: 	param1:
+#		param2:
+#
+#	output: output1:
+#
+#	example: output1 = exampleFunction(param1,param2)
+#
+#	Copyright 2017 Your Name
+#	Version 0.1 by Your Name dd.mm.yyyy
+#	...
+#
+#	Change log:
+#	Version 0.1 dd.mm.yyyy Initial version
+#	...
+#
+#	to be done:
+#	- ...
+#
+#------------------------------------------------
