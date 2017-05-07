@@ -6,6 +6,7 @@
 #include <iomanip>
 #include <cmath>
 #include <map>
+#include <algorithm>
 
 
 Calculation_area::Calculation_area(int height, int width, int wall_thickness):
@@ -66,9 +67,9 @@ Calculation_area::move_particles(){
     for (itmap = particles_.begin(); itmap != particles_.end(); ++itmap) {
         if(itmap->first == 200){
             for (itvek = itmap->second.begin(); itvek != itmap->second.end(); ++itvek){
-                cout << "moved:" << itmap->first << ": "<< itvek->get_x() << "->";
-                itvek->move_particle(10.0, 0.0, 20.0);
-                cout << itvek->get_x() << endl;
+                //cout << "moved:" << itmap->first << ": "<< itvek->get_x() << "->";
+                itvek->move_particle(1.0, 0.0, 2.0);
+                //cout << itvek->get_x() << endl;
         }
     }
   }
@@ -82,18 +83,51 @@ Calculation_area::hae_alue() {
 
 void
 Calculation_area::boundary_conditions(){
-    vector<particle>::iterator itvek;
-    map<int, vector<particle>>::iterator itmap;
+    // vector<particle>::iterator itvek;
+    // map<int, vector<particle>>::iterator itmap;
 
-    for(itmap = particles_.begin(); itmap != particles_.end(); ++itmap){
-        if(itmap->first == 200){
-            for(itvek = itmap->second.begin(); itvek != itmap->second.end(); ++itvek){
-                if(itvek->get_x() > ALUE_X or itvek->get_x() < 0){
-                    itmap->second.erase(itvek);
-                    cout << "erased" << itvek->get_x() << endl;
-                }
+    // for(itmap = particles_.begin(); itmap != particles_.end(); ++itmap){
+    //     if(itmap->first == 200){
+    //         for(itvek = itmap->second.begin(); itvek != itmap->second.end(); ++itvek){
+    //             if(itvek->get_x() > ALUE_X or itvek->get_x() < 0){
+    //                 itmap->second.erase(itvek);
+    //                 cout << "erased" << itvek->get_x() << endl;
+    //             }
 
-            }
-        }
+    //         }
+    //     }
+    // }
+
+    //Removes particles that are out of X area. 
+    particles_.at(200).erase(
+        std::remove_if(
+            particles_.at(200).begin(),
+            particles_.at(200).end(),
+            [](particle i){ //<- Lambda function. If true, 
+                            //particle is removed by remove_if
+                if(i.get_x()>ALUE_X or i.get_x()<0) {
+                    cout << "removed x:" << i.get_x()<< endl; 
+                    return true;
+                } 
+                else 
+                    return false;
+            }), 
+        particles_.at(200).end());
+    
+
+    //Removes particles that are out of Y area.
+    particles_.at(200).erase(
+        std::remove_if(
+            particles_.at(200).begin(),
+            particles_.at(200).end(),
+            [](particle i){ //<- Lambda function. If true, 
+                            //particle is removed by remove_if
+                if(i.get_y()>ALUE_Y or i.get_y()<0) {
+                    cout << "removed y:" << i.get_y()<< endl; 
+                    return true;
+                } 
+                else 
+                    return false;
+            }), 
+        particles_.at(200).end());
     }
-}

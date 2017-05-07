@@ -21,13 +21,15 @@ int main()
     //initialize particles for the area
     laskenta_alue.initialize_calculation_area();
     //laskenta_alue.print_all();
+
     writefile(laskenta_alue,timestep);
 
-    laskenta_alue.move_particles();
-    laskenta_alue.boundary_conditions();
-
-    //write datafile with number data_timestep, where timestep a is number from 0001 to 9999
-    writefile(laskenta_alue,timestep+1);
+    for (timestep = 1; timestep < 20; ++timestep) {
+        cout << "  Timestep" << timestep << endl;
+        laskenta_alue.move_particles();
+        laskenta_alue.boundary_conditions();
+        writefile(laskenta_alue,timestep);
+    }
 
 
 
