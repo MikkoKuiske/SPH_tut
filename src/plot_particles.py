@@ -50,8 +50,6 @@ def readfile(name):
 # This program reads all files from targeted path, creates images from their data and saves the images in targeted subdirectory.
 def main():
     
-    root = Tk()
-    
     tick = time.time()
     debug = 1
     x_wall, y_wall, x_water, y_water = [], [], [], []

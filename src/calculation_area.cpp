@@ -105,10 +105,8 @@ Calculation_area::boundary_conditions(){
             particles_.at(200).end(),
             [](particle i){ //<- Lambda function. If true, 
                             //particle is removed by remove_if
-                if(i.get_x()>ALUE_X or i.get_x()<0) {
-                    cout << "removed x:" << i.get_x()<< endl; 
+                if(i.get_x()>ALUE_X or i.get_x()<0) 
                     return true;
-                } 
                 else 
                     return false;
             }), 
@@ -122,10 +120,8 @@ Calculation_area::boundary_conditions(){
             particles_.at(200).end(),
             [](particle i){ //<- Lambda function. If true, 
                             //particle is removed by remove_if
-                if(i.get_y()>ALUE_Y or i.get_y()<0) {
-                    cout << "removed y:" << i.get_y()<< endl; 
+                if(i.get_y()>ALUE_Y or i.get_y()<0)  
                     return true;
-                } 
                 else 
                     return false;
             }), 

@@ -16,7 +16,7 @@ int main()
     int timestep{1};
 
     //Create the calculation area by giving it outer borders
-    Calculation_area laskenta_alue(ALUE_Y,ALUE_X, SEINAN_PAKSUUS);
+    Calculation_area laskenta_alue(ALUE_Y,ALUE_X, WALL_THICKNESS);
     
     //initialize particles for the area
     laskenta_alue.initialize_calculation_area();

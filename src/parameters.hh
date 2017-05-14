@@ -1,8 +1,9 @@
 #ifndef PARAMETERS_HH
 #define PARAMETERS_HH
 
-#define ALUE_Y 70
-#define ALUE_X 70
-#define SEINAN_PAKSUUS ALUE_Y/10
+const int ALUE_Y = 70;
+const int ALUE_X = 70;
+const int WALL_THICKNESS = ALUE_Y/10;
+const double PARTICLE_DIAMETER = 1;
 
 #endif // PARAMETERS_HH
