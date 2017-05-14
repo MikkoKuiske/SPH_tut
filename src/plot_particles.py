@@ -8,11 +8,12 @@
 #	output:   datafile0001.png, datafile002.txt,...
 #
 #	Copyright 2017 Veikko Härö
-#	Version 0.1 by Veikko 07.05.2017
+#	Version 0.2 by Veikko 07.05.2017
 #	...
 #
 #	Change log:
 #	Version 0.1 07.05.2017 Initial version
+#	Version 0.2 14.05.2017 Initial version
 #	...
 #
 #	to be done: User Interface, Read only .txt files from directory
@@ -50,8 +51,11 @@ def readfile(name):
 # This program reads all files from targeted path, creates images from their data and saves the images in targeted subdirectory.
 def main():
     
-    tick = time.time()
+    # Configurable options
     debug = 1
+    particle_size = 6
+    
+    tick = time.time()
     x_wall, y_wall, x_water, y_water = [], [], [], []
     path = ".." + os.sep + "data"
     filenames_list = os.listdir(path)
@@ -68,9 +72,9 @@ def main():
         
         #draw plot
         for j in range(len(x_wall)):
-            plt.plot(x_wall[j],y_wall[j],"go")
+            plt.plot(x_wall[j],y_wall[j],"go", markersize = particle_size)
         for j in range(len(x_water)):
-            plt.plot(x_water[j],y_water[j],"bo")
+            plt.plot(x_water[j],y_water[j],"bo", markersize = particle_size)
         plt.axis([xmin,xmax,ymin,ymax])
         
         filename = filenames_list[i]
@@ -80,6 +84,8 @@ def main():
         
         #empties lists for next loop iteration
         x_wall, y_wall, x_water, y_water = [], [], [], []
+        print("Image file " + filename + ".png created.")
+        
     tock = time.time()
     if debug == 1:
         hours = int((tock-tick)/3600)
@@ -87,7 +93,5 @@ def main():
         seconds = int(60*(60*((tock-tick)/3600-hours)-minutes))
         print("Time elapsed: " + str(hours) + " h " + str(minutes) + " min " + str(seconds) + " sec")
         
-        
-    
 main()
 
