@@ -24,7 +24,7 @@ int main()
 
     writefile(laskenta_alue,timestep);
 
-    for (timestep = 1; timestep < 20; ++timestep) {
+    for (timestep = START_TIME; timestep < END_TIME; ++timestep) {
         cout << "  Timestep" << timestep << endl;
         laskenta_alue.move_particles();
         laskenta_alue.boundary_conditions();
