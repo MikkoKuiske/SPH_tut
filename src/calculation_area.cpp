@@ -28,7 +28,7 @@ Calculation_area::initialize_calculation_area() {
 
             //Tee "seinä"pallo keskelle (x-xo)²+(y-yo)² = säde
             else if (sqrt(pow(x-area_width_/2.0,2)+
-                    pow(y-area_height_/2.0,2)) < double(area_height_)/4.0)
+                          pow(y-area_height_/2.0,2)) < double(area_height_)/4.0)
                 add_particle(particle (x,y,100));
 
             //Kaikki muu on vettä
@@ -70,9 +70,9 @@ Calculation_area::move_particles(){
                 //cout << "moved:" << itmap->first << ": "<< itvek->get_x() << "->";
                 itvek->move_particle(1.0, 0.0, 2.0);
                 //cout << itvek->get_x() << endl;
+            }
         }
     }
-  }
 }
 
 
@@ -98,32 +98,48 @@ Calculation_area::boundary_conditions(){
     //     }
     // }
 
-    //Removes particles that are out of X area. 
+    //Removes particles that are out of X area.
     particles_.at(200).erase(
-        std::remove_if(
-            particles_.at(200).begin(),
-            particles_.at(200).end(),
-            [](particle i){ //<- Lambda function. If true, 
-                            //particle is removed by remove_if
-                if(i.get_x()>ALUE_X or i.get_x()<0) 
-                    return true;
-                else 
-                    return false;
-            }), 
-        particles_.at(200).end());
+                std::remove_if(
+                    particles_.at(200).begin(),
+                    particles_.at(200).end(),
+                    [](particle i){ //<- Lambda function. If true,
+                                    //particle is removed by remove_if
+                                    if(i.get_x()>ALUE_X or i.get_x()<0)
+                                    return true;
+                                    else
+                                    return false;
+                }),
+            particles_.at(200).end());
     
 
     //Removes particles that are out of Y area.
     particles_.at(200).erase(
-        std::remove_if(
-            particles_.at(200).begin(),
-            particles_.at(200).end(),
-            [](particle i){ //<- Lambda function. If true, 
-                            //particle is removed by remove_if
-                if(i.get_y()>ALUE_Y or i.get_y()<0)  
-                    return true;
-                else 
-                    return false;
-            }), 
-        particles_.at(200).end());
+                std::remove_if(
+                    particles_.at(200).begin(),
+                    particles_.at(200).end(),
+                    [](particle i){ //<- Lambda function. If true,
+                                    //particle is removed by remove_if
+                                    if(i.get_y()>ALUE_Y or i.get_y()<0)
+                                    return true;
+                                    else
+                                    return false;
+                }),
+            particles_.at(200).end());
+}
+
+void
+Calculation_area::particle_groupping(){
+    int particle_group_size = 6;
+
+    int area_matrix[ALUE_X][ALUE_Y][particle_group_size];
+
+    group_height_ = 2*PARTICLE_DIAMETER;
+    group_width_ = 2*PARTICLE_DIAMETER;
+
+    for (int i=0; i < particles_.at(200).size(); ++i){
+        int particle_x_value = floor(*particles_.at(200).at(i).get_x() / group_width_ );
+
+
     }
+}
