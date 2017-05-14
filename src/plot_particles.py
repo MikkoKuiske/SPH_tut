@@ -1,8 +1,30 @@
 # -*- coding: utf-8 -*-
 
+#------------------------------------------------
+# This program reads all files from targeted path, creates images from their data and saves the images in targeted subdirectory.
+#
+#	input: 	path: directory with datafiles (datafile0001.txt, datafile002.txt,...)
+#
+#	output:   datafile0001.png, datafile002.txt,...
+#
+#	Copyright 2017 Veikko Härö
+#	Version 0.1 by Veikko 07.05.2017
+#	...
+#
+#	Change log:
+#	Version 0.1 07.05.2017 Initial version
+#	...
+#
+#	to be done: User Interface, Read only .txt files from directory
+#	- ...
+#
+#------------------------------------------------
+
 import matplotlib.pyplot as plt
 import os
+import time
 
+#reads named file row by row and returns lists of coordiantes according to their assigned types
 def readfile(name):
     x_wall, y_wall, x_water, y_water = [], [], [], []
     with open(name) as file:
@@ -25,12 +47,19 @@ def readfile(name):
     file.close()
     return x_wall, y_wall, x_water, y_water
 
+# This program reads all files from targeted path, creates images from their data and saves the images in targeted subdirectory.
 def main():
+    
+    root = Tk()
+    
+    tick = time.time()
+    debug = 1
     x_wall, y_wall, x_water, y_water = [], [], [], []
     path = ".." + os.sep + "data"
     filenames_list = os.listdir(path)
+    filenames_list.remove("images")
     for i in range (0,len(filenames_list)):
-        path_and_filename = path + os.sep +  filenames_list[i]
+        path_and_filename = path + os.sep + filenames_list[i]
         x_wall, y_wall, x_water, y_water = readfile(path_and_filename)
     
         #border values for plot axes
@@ -48,19 +77,19 @@ def main():
         
         filename = filenames_list[i]
         filename = filename[:filename.find(".")]
-        plt.savefig(path + os.sep + filename + ".png")
+        plt.savefig(path + os.sep + "images" + os.sep + filename + ".png")
+        plt.clf()
         
         #empties lists for next loop iteration
         x_wall, y_wall, x_water, y_water = [], [], [], []
+    tock = time.time()
+    if debug == 1:
+        hours = int((tock-tick)/3600)
+        minutes = int(60*((tock-tick)/3600-hours))
+        seconds = int(60*(60*((tock-tick)/3600-hours)-minutes))
+        print("Time elapsed: " + str(hours) + " h " + str(minutes) + " min " + str(seconds) + " sec")
         
         
     
 main()
-
-"""
-Created on Sun Apr 02 17:08:34 2017
-
-@author: Veikko
-"""
-
 
