@@ -2,10 +2,12 @@
 #define CALCULATION_AREA_HH
 
 #include "particle.hh"
+#include "parameters.hh"
 
 #include <iostream>
 #include <map>
 #include <vector>
+#include <math.h>
 
 
 using namespace std;
@@ -20,15 +22,17 @@ public:
     void print_all();								//prints all particles in calculation area
     void move_particles();                          //moves individual particle by updating it's location
     void boundary_conditions();                     //Erases particle if particle is out of boundary lines
-    void particle_groupping();                      //Groups particles into an area of 2*diameter of the particle
+    void particle_grouping();                      //Groups particles into an area of 2*diameter of the particle
 
 private:
     int area_height_;
     int area_width_;
     int area_wall_thickness_;
 
-    int group_height_;
-    int group_width_;
+    int group_height_ = 2*PARTICLE_DIAMETER;
+    int group_width_ = 2*PARTICLE_DIAMETER;
+
+    //vector<particle*> area_matrix[floor(ALUE_X / (2*PARTICLE_DIAMETER))][floor(ALUE_Y / (2*PARTICLE_DIAMETER))];
 
     map<int,vector<particle>> particles_;
 };

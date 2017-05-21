@@ -129,27 +129,28 @@ Calculation_area::boundary_conditions(){
 }
 
 void
-Calculation_area::particle_groupping(){
+Calculation_area::particle_grouping(){
     //int particle_group_size;
-    int particle_x_value;
-    int particle_y_value;
+    int particle_x_index;
+    int particle_y_index;
+
+    //int x_koko = floor(ALUE_X / (2*PARTICLE_DIAMETER));
+    //int y_koko = floor(ALUE_Y / (2*PARTICLE_DIAMETER));
 
     vector<particle*> area_matrix[ALUE_X][ALUE_Y];
-
-    group_height_ = 2*PARTICLE_DIAMETER;
-    group_width_ = 2*PARTICLE_DIAMETER;
 
     for (unsigned int i=0; i < particles_.at(200).size(); ++i){
 
         particle* p_Pointer = new particle{particles_.at(200).at(i)};
 
-        particle_x_value = floor(((particles_.at(200).at(i))).get_x() / group_width_ ); // int particle_x_value = floor(*particles_.at(200).at(i).get_x() / group_width_ );
+        particle_x_index = floor(((particles_.at(200).at(i))).get_x() / group_width_ ); // int particle_x_index = floor(*particles_.at(200).at(i).get_x() / group_width_ );
 
-        particle_y_value = floor(((particles_.at(200).at(i))).get_y() / group_height_);
+        particle_y_index = floor(((particles_.at(200).at(i))).get_y() / group_height_);
 
-        area_matrix[particle_x_value][particle_y_value].push_back(p_Pointer); // (particles_.at(200).at(i))*
+        area_matrix[particle_x_index][particle_y_index].push_back(p_Pointer); // (particles_.at(200).at(i))*
 
-        cout << ": " << area_matrix[particle_x_value][particle_y_value].size() << endl;
+        cout << particle_x_index << " : " << particle_y_index << ": " << area_matrix[particle_x_index][particle_y_index].size() << endl;
+
         delete p_Pointer;
     }
 }

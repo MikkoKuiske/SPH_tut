@@ -32,7 +32,7 @@ int main()
 
     }
 
-    laskenta_alue.particle_groupping();
+    laskenta_alue.particle_grouping();
 
 
 }
