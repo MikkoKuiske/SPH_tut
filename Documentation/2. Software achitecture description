@@ -1,4 +1,48 @@
+
+Program behaviour plan:
+
+1. Initialize calculation (input parameters from user)		(function 1)
+	- Particle attributes (position, type, velocity, mass,...)
+	- Calculation area limits (X x Y area, wall area)
+	- Timestep length
+	- Endtime
+	- Inflow
+	etc
+	initial [particle.hh] and [calculation_area.hh]
+2. Save datafile initial positioning as time 0			(function 2)
+	initial [datafile]
+3. Begin Timeloop						(function 3)
+
+---- LOOP (while time < endtime) ----
+4. Do particle grouping
+5. Calculate forces, acceleration, velocity 			(function 4)
+	update [particle.hh]
+6. Move particles						(function 5)
+	update [particle.hh]
+7. Inflow							(function 7)
+	update [calculation_area.hh]
+	update [particle.hh]
+8. Damping loop							(function 8)
+9. Check boundaries						(function 6)
+10. Save datafile as time x 					(function 2)
+	update [datafile]
+--- LOOP END -----
+
+11. finish program
+
+
+
+Classes:
+
+particle.hh:
+[type;
+x;
+y]
+
+
+
 Functions to do:
+
 
 1.	Particle initial positioning (=initializing calculation)
 2.	Write Datafile
@@ -12,29 +56,5 @@ Functions to do:
 6.	Calculate velocity
 7.	Move Particles according to velocity and acceleration
 
-
-
-
-Program behaviour plan:
-
-1. Initialize calculation
-	- Particle attributes (position, type etc.)
-	- Calculation area limits
-	- Timestep length
-	- Endtime
-	etc.
-2. Save initial positioning as time 0
-3. Begin Timeloop
-
----- LOOP ----
-4. Check boundaries 				(function 3)
-5. Density correction 				(function 4)
-6. Calculate forces, acceleration, velocity 	(functions 5 & 6)
-7. Move particles				(function 7)
-8. Density correction
-9. Save datafile as time x 			(loop_round*timestep)
---- LOOP END -----
-
-10. finish program
 
 
