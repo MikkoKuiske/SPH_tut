@@ -29,8 +29,10 @@ int main()
         laskenta_alue.move_particles();
         laskenta_alue.boundary_conditions();
         writefile(laskenta_alue,timestep);
+
     }
 
+    laskenta_alue.particle_groupping();
 
 
 }
