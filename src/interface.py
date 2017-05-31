@@ -39,6 +39,9 @@ class Interface:
         
         self.__makefile = Button(self.__main_window, text = "MAKE", command=self.Makefile)
         self.__makefile.pack()
+
+        self.__runprogram = Button(self.__main_window, text = "RUN", command=self.RunProgram)
+        self.__runprogram.pack()
         
         self.__plot_p = Button(self.__main_window, text = "PLOT",
                                        command=self.Plot)
@@ -50,8 +53,14 @@ class Interface:
         
         self.__main_window.mainloop()
 
-    def Exit(self):
-        self.__main_window.destroy()
+    def RunProgram(self):
+        if platform.system() == "Windows":
+            print("Not implemented yet for Windows.")
+        elif platform.system() == "Linux":
+            os.system("./../virtausohjelma.out")
+        else:
+            print("This feature can only be used on Windows or Linux platforms.")
+        
         
     def Makefile(self):
         if platform.system() == "Windows":
@@ -63,6 +72,9 @@ class Interface:
         
     def Plot(self):
         plot_particles.main()
+        
+    def Exit(self):
+        self.__main_window.destroy()
         
 
 def main():
