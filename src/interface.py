@@ -55,9 +55,11 @@ class Interface:
         
     def Makefile(self):
         if platform.system() == "Windows":
-            print(platform.system())
+            print("Not implemented yet for Windows.")
         elif platform.system == "Linux":
-            print(platform.system())
+            os.system("cd ..")
+            os.system("make")
+            os.system("cd src")
         
     def Plot(self):
         plot_particles.main()
