@@ -7,6 +7,7 @@
 #include <cmath>
 #include <map>
 #include <algorithm>
+#include <vector>
 
 
 Calculation_area::Calculation_area(int height, int width, int wall_thickness):
@@ -24,16 +25,16 @@ Calculation_area::initialize_calculation_area() {
 
             //Tee seinät
             if (y < area_wall_thickness_ || y > area_height_-area_wall_thickness_)
-                add_particle(particle (x,y,100));
+                add_particle(particle (x,y,TYPE_WALL));
 
             //Tee "seinä"pallo keskelle (x-xo)²+(y-yo)² = säde
             else if (sqrt(pow(x-area_width_/2.0,2)+
                           pow(y-area_height_/2.0,2)) < double(area_height_)/4.0)
-                add_particle(particle (x,y,100));
+                add_particle(particle (x,y,TYPE_WALL));
 
             //Kaikki muu on vettä
             else
-                add_particle(particle (x,y,200));
+                add_particle(particle (x,y,TYPE_WATER));
         }
     }
 }
@@ -65,7 +66,7 @@ Calculation_area::move_particles(){
     map<int, vector<particle>>::iterator itmap;
 
     for (itmap = particles_.begin(); itmap != particles_.end(); ++itmap) {
-        if(itmap->first == 200){
+        if(itmap->first == TYPE_WATER){
             for (itvek = itmap->second.begin(); itvek != itmap->second.end(); ++itvek){
                 //cout << "moved:" << itmap->first << ": "<< itvek->get_x() << "->";
                 itvek->move_particle(1.0, 0.0, 2.0);
@@ -87,7 +88,7 @@ Calculation_area::boundary_conditions(){
     // map<int, vector<particle>>::iterator itmap;
 
     // for(itmap = particles_.begin(); itmap != particles_.end(); ++itmap){
-    //     if(itmap->first == 200){
+    //     if(itmap->first == TYPE_WATER){
     //         for(itvek = itmap->second.begin(); itvek != itmap->second.end(); ++itvek){
     //             if(itvek->get_x() > ALUE_X or itvek->get_x() < 0){
     //                 itmap->second.erase(itvek);
@@ -99,10 +100,10 @@ Calculation_area::boundary_conditions(){
     // }
 
     //Removes particles that are out of X area.
-    particles_.at(200).erase(
+    particles_.at(TYPE_WATER).erase(
                 std::remove_if(
-                    particles_.at(200).begin(),
-                    particles_.at(200).end(),
+                    particles_.at(TYPE_WATER).begin(),
+                    particles_.at(TYPE_WATER).end(),
                     [](particle i){ //<- Lambda function. If true,
                                     //particle is removed by remove_if
                                     if(i.get_x()>ALUE_X or i.get_x()<0)
@@ -110,14 +111,14 @@ Calculation_area::boundary_conditions(){
                                     else
                                     return false;
                 }),
-            particles_.at(200).end());
+            particles_.at(TYPE_WATER).end());
     
 
     //Removes particles that are out of Y area.
-    particles_.at(200).erase(
+    particles_.at(TYPE_WATER).erase(
                 std::remove_if(
-                    particles_.at(200).begin(),
-                    particles_.at(200).end(),
+                    particles_.at(TYPE_WATER).begin(),
+                    particles_.at(TYPE_WATER).end(),
                     [](particle i){ //<- Lambda function. If true,
                                     //particle is removed by remove_if
                                     if(i.get_y()>ALUE_Y or i.get_y()<0)
@@ -125,7 +126,7 @@ Calculation_area::boundary_conditions(){
                                     else
                                     return false;
                 }),
-            particles_.at(200).end());
+            particles_.at(TYPE_WATER).end());
 }
 
 void
@@ -139,15 +140,16 @@ Calculation_area::particle_grouping(){
 
     vector<particle*> area_matrix[ALUE_X][ALUE_Y];
 
-    for (unsigned int i=0; i < particles_.at(200).size(); ++i){
+    for (unsigned int i=0; i < particles_.at(TYPE_WATER).size(); ++i){
 
-        particle* p_Pointer = new particle{particles_.at(200).at(i)};
 
-        particle_x_index = floor(((particles_.at(200).at(i))).get_x() / group_width_ ); // int particle_x_index = floor(*particles_.at(200).at(i).get_x() / group_width_ );
+        particle* p_Pointer = new particle{particles_.at(TYPE_WATER).at(i)};
 
-        particle_y_index = floor(((particles_.at(200).at(i))).get_y() / group_height_);
+        particle_x_index = floor(((particles_.at(TYPE_WATER).at(i))).get_x() / group_width_ ); // int particle_x_index = floor(*particles_.at(TYPE_WATER).at(i).get_x() / group_width_ );
 
-        area_matrix[particle_x_index][particle_y_index].push_back(p_Pointer); // (particles_.at(200).at(i))*
+        particle_y_index = floor(((particles_.at(TYPE_WATER).at(i))).get_y() / group_height_);
+
+        area_matrix[particle_x_index][particle_y_index].push_back(p_Pointer); // (particles_.at(TYPE_WATER).at(i))*
 
         cout << particle_x_index << " : " << particle_y_index << ": " << area_matrix[particle_x_index][particle_y_index].size() << endl;
 

@@ -1,4 +1,5 @@
 #include "file_operations.hh"
+#include "parameters.hh"
 
 #include <iostream>
 #include <iomanip>
@@ -27,7 +28,7 @@ void writefile(Calculation_area laskenta_alue, int time) {
     datafile.open(data_name);
 
     for (auto mapiter : laskenta_alue.hae_alue()) {
-        if (mapiter.first == 100)
+        if (mapiter.first == TYPE_WALL)
             tyyppi = "wall";
         else
             tyyppi = "water";

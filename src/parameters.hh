@@ -9,7 +9,9 @@ const int WALL_THICKNESS = ALUE_Y/10;
 const int START_TIME = 1;
 const int END_TIME = 20;
 
-
 const double PARTICLE_DIAMETER = 1;
+
+const int TYPE_WATER = 200;
+const int TYPE_WALL = 100;
 
 #endif // PARAMETERS_HH

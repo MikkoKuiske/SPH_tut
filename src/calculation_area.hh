@@ -22,7 +22,7 @@ public:
     void print_all();								//prints all particles in calculation area
     void move_particles();                          //moves individual particle by updating it's location
     void boundary_conditions();                     //Erases particle if particle is out of boundary lines
-    void particle_grouping();                      //Groups particles into an area of 2*diameter of the particle
+    void particle_grouping();                       //Groups particles into an area of 2*diameter of the particle
 
 private:
     int area_height_;
