@@ -8,12 +8,13 @@
 #	output:   datafile0001.png, datafile002.txt,...
 #
 #	Copyright 2017 Veikko Härö
-#	Version 0.2 by Veikko 07.05.2017
+#	Version 0.3 by Veikko 31.05.2017
 #	...
 #
 #	Change log:
 #	Version 0.1 07.05.2017 Initial version
-#	Version 0.2 14.05.2017 Initial version
+#	Version 0.2 14.05.2017
+#	Version 0.3 31.05.2017 Removed "main()" in the end
 #	...
 #
 #	to be done: User Interface, Read only .txt files from directory
@@ -92,6 +93,4 @@ def main():
         minutes = int(60*((tock-tick)/3600-hours))
         seconds = int(60*(60*((tock-tick)/3600-hours)-minutes))
         print("Time elapsed: " + str(hours) + " h " + str(minutes) + " min " + str(seconds) + " sec")
-        
-main()
 
