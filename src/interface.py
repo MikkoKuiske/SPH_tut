@@ -56,7 +56,7 @@ class Interface:
     def Makefile(self):
         if platform.system() == "Windows":
             print("Not implemented yet for Windows.")
-        elif platform.system == "Linux":
+        elif platform.system() == "Linux":
             os.system("cd ..")
             os.system("make")
             os.system("cd src")
