@@ -15,7 +15,7 @@
 #	Version 0.1 31.05.2017 Initial version
 #	...
 #
-#	to be done: User Interface, Read only .txt files from directory
+#	to be done: Add Windows compatilibity for Makefile
 #	- ...
 #
 #------------------------------------------------
@@ -57,9 +57,9 @@ class Interface:
         if platform.system() == "Windows":
             print("Not implemented yet for Windows.")
         elif platform.system() == "Linux":
-            os.system("cd ..")
-            os.system("make")
-            os.system("cd src")
+            os.system("make -C ./../")
+        else:
+            print("This feature can only be used on Windows or Linux platforms.")
         
     def Plot(self):
         plot_particles.main()
