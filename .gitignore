@@ -1,6 +1,7 @@
 build
 data
 virtausohjelma.out
+Original_program
 *.autosave
 *Debug
 *.pro.user
