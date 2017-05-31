@@ -2,6 +2,7 @@ build
 data
 virtausohjelma.out
 Original_program
+*.pyc
 *.autosave
 *Debug
 *.pro.user
