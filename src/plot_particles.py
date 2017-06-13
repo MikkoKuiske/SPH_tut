@@ -8,16 +8,19 @@
 #	output:   datafile0001.png, datafile002.txt,...
 #
 #	Copyright 2017 Veikko Härö
-#	Version 0.3 by Veikko 31.05.2017
+#	Version 0.4 by Veikko 31.05.2017
 #	...
 #
 #	Change log:
 #	Version 0.1 07.05.2017 Initial version
 #	Version 0.2 14.05.2017
 #	Version 0.3 31.05.2017 Removed "main()" in the end
+#   Version 0.4 13.6.2017 Changed path according to new Interface-file 
+#                         location, "path" to "plot_path"
+#                         
 #	...
 #
-#	to be done: User Interface, Read only .txt files from directory
+#	to be done: Read only .txt files from directory
 #	- ...
 #
 #------------------------------------------------
@@ -58,11 +61,11 @@ def main():
     
     tick = time.time()
     x_wall, y_wall, x_water, y_water = [], [], [], []
-    path = ".." + os.sep + "data"
-    filenames_list = os.listdir(path)
+    plot_path = "data"
+    filenames_list = os.listdir(plot_path)
     filenames_list.remove("images")
     for i in range (0,len(filenames_list)):
-        path_and_filename = path + os.sep + filenames_list[i]
+        path_and_filename = plot_path + os.sep + filenames_list[i]
         x_wall, y_wall, x_water, y_water = readfile(path_and_filename)
     
         #border values for plot axes
@@ -80,7 +83,7 @@ def main():
         
         filename = filenames_list[i]
         filename = filename[:filename.find(".")]
-        plt.savefig(path + os.sep + "images" + os.sep + filename + ".png")
+        plt.savefig(plot_path + os.sep + "images" + os.sep + filename + ".png")
         plt.clf()
         
         #empties lists for next loop iteration
