@@ -81,7 +81,7 @@ class Interface:
             print("Not implemented yet for Windows.")
         elif platform.system() == "Linux":
             print("Compiling program...")
-            os.system("make -C " + Interface.path)
+            os.system("make -C " + Interface.__path)
             print("Compiling completed!")
         else:
             print("This feature can only be used on Windows or Linux platforms.")
