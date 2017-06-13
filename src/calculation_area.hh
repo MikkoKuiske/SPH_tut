@@ -28,6 +28,7 @@ private:
     int area_height_;
     int area_width_;
     int area_wall_thickness_;
+    unsigned int vector_size_limit_;
 
     int group_height_ = 2*PARTICLE_DIAMETER;
     int group_width_ = 2*PARTICLE_DIAMETER;

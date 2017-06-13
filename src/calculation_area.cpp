@@ -13,8 +13,18 @@
 Calculation_area::Calculation_area(int height, int width, int wall_thickness):
     area_height_(height),
     area_width_(width),
-    area_wall_thickness_(wall_thickness)
+    area_wall_thickness_(wall_thickness),
+    vector_size_limit_(height * width)
 {
+    //int limit = height * width;
+    vector<particle> dum_vec_1;
+    vector<particle> dum_vec_2;
+    dum_vec_1.reserve(vector_size_limit_);
+    dum_vec_2.reserve(vector_size_limit_);
+
+    particles_.insert({TYPE_WATER,dum_vec_1});
+    particles_.insert({TYPE_WALL,dum_vec_2});
+
 }
 
 void
@@ -41,10 +51,25 @@ Calculation_area::initialize_calculation_area() {
 
 void
 Calculation_area::add_particle(particle to_add) {
-    if (particles_.find(to_add.get_type()) == particles_.end())
-        particles_.insert({to_add.get_type(),{to_add}});
-    else
-        particles_.at(to_add.get_type()).push_back(to_add);
+
+    //if (particles_.find(to_add.get_type()) == particles_.end())
+    //    particles_.insert({to_add.get_type(),{to_add}});
+    //else
+    if (particles_.at(to_add.get_type()).size() >= vector_size_limit_){
+        //vector<particle> temp_vec;
+        //temp_vec.reserve(particles_.at(to_add.get_type()).size() + 1000);
+        //copy(particles_.at(to_add.get_type()).begin(), particles_.at(to_add.get_type()).end(), back_inserter(temp_vec));
+
+        particles_.at(to_add.get_type()).reserve(vector_size_limit_ + 1000);
+
+        //particles_.at(to_add.get_type()) = temp_vec;
+
+        vector_size_limit_ = vector_size_limit_ + 1000;
+        //cout << "kaytiin kasvattaan kokoa" << endl;
+        //cout << "koko nyt " << vector_size_limit_ << endl;
+
+    }
+    particles_.at(to_add.get_type()).push_back(to_add);
 }
 
 /*
