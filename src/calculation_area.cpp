@@ -8,8 +8,32 @@
 #include <map>
 #include <algorithm>
 #include <vector>
-
-
+/*
+#------------------------------------------------
+# <short overview of the function/script>
+#
+#	syntax: output1 = exampleFuntion(param1,param2)
+#
+#	input: 	param1:
+#		param2:
+#
+#	output: output1:
+#
+#	example: output1 = exampleFunction(param1,param2)
+#
+#	Copyright 2017 Your Name
+#	Version 0.1 by Your Name dd.mm.yyyy
+#	...
+#
+#	Change log:
+#	Version 0.1 dd.mm.yyyy Initial version
+#	...
+#
+#	to be done:
+#	- ...
+#
+#------------------------------------------------
+*/
 Calculation_area::Calculation_area(int height, int width, int wall_thickness):
     area_height_(height),
     area_width_(width),
@@ -26,6 +50,33 @@ Calculation_area::Calculation_area(int height, int width, int wall_thickness):
     particles_.insert({TYPE_WALL,dum_vec_2});
 
 }
+
+/*
+#------------------------------------------------
+# <short overview of the function/script>
+#
+#	syntax: output1 = exampleFuntion(param1,param2)
+#
+#	input: 	param1:
+#		param2:
+#
+#	output: output1:
+#
+#	example: output1 = exampleFunction(param1,param2)
+#
+#	Copyright 2017 Your Name
+#	Version 0.1 by Your Name dd.mm.yyyy
+#	...
+#
+#	Change log:
+#	Version 0.1 dd.mm.yyyy Initial version
+#	...
+#
+#	to be done:
+#	- ...
+#
+#------------------------------------------------
+*/
 
 void
 Calculation_area::initialize_calculation_area() {
@@ -48,6 +99,33 @@ Calculation_area::initialize_calculation_area() {
         }
     }
 }
+
+/*
+#------------------------------------------------
+# <short overview of the function/script>
+#
+#	syntax: output1 = exampleFuntion(param1,param2)
+#
+#	input: 	param1:
+#		param2:
+#
+#	output: output1:
+#
+#	example: output1 = exampleFunction(param1,param2)
+#
+#	Copyright 2017 Your Name
+#	Version 0.1 by Your Name dd.mm.yyyy
+#	...
+#
+#	Change log:
+#	Version 0.1 dd.mm.yyyy Initial version
+#	...
+#
+#	to be done:
+#	- ...
+#
+#------------------------------------------------
+*/
 
 void
 Calculation_area::add_particle(particle to_add) {
@@ -85,6 +163,33 @@ Calculation_area::print_all() {
 }
 */
 
+/*
+#------------------------------------------------
+# <short overview of the function/script>
+#
+#	syntax: output1 = exampleFuntion(param1,param2)
+#
+#	input: 	param1:
+#		param2:
+#
+#	output: output1:
+#
+#	example: output1 = exampleFunction(param1,param2)
+#
+#	Copyright 2017 Your Name
+#	Version 0.1 by Your Name dd.mm.yyyy
+#	...
+#
+#	Change log:
+#	Version 0.1 dd.mm.yyyy Initial version
+#	...
+#
+#	to be done:
+#	- ...
+#
+#------------------------------------------------
+*/
+
 void
 Calculation_area::move_particles(){
     vector<particle>::iterator itvek;
@@ -106,6 +211,33 @@ std::map<int,std::vector<particle>>
 Calculation_area::hae_alue() {
     return particles_;
 }
+
+/*
+#------------------------------------------------
+# <short overview of the function/script>
+#
+#	syntax: output1 = exampleFuntion(param1,param2)
+#
+#	input: 	param1:
+#		param2:
+#
+#	output: output1:
+#
+#	example: output1 = exampleFunction(param1,param2)
+#
+#	Copyright 2017 Your Name
+#	Version 0.1 by Your Name dd.mm.yyyy
+#	...
+#
+#	Change log:
+#	Version 0.1 dd.mm.yyyy Initial version
+#	...
+#
+#	to be done:
+#	- ...
+#
+#------------------------------------------------
+*/
 
 void
 Calculation_area::boundary_conditions(){
@@ -154,6 +286,33 @@ Calculation_area::boundary_conditions(){
             particles_.at(TYPE_WATER).end());
 }
 
+/*
+#------------------------------------------------
+# <short overview of the function/script>
+#
+#	syntax: output1 = exampleFuntion(param1,param2)
+#
+#	input: 	param1:
+#		param2:
+#
+#	output: output1:
+#
+#	example: output1 = exampleFunction(param1,param2)
+#
+#	Copyright 2017 Your Name
+#	Version 0.1 by Your Name dd.mm.yyyy
+#	...
+#
+#	Change log:
+#	Version 0.1 dd.mm.yyyy Initial version
+#	...
+#
+#	to be done:
+#	- Aream matrix twice the size needed. Atm 70*70 -> could be 35*35
+#
+#------------------------------------------------
+*/
+
 void
 Calculation_area::particle_grouping(){
     //int particle_group_size;
@@ -164,6 +323,22 @@ Calculation_area::particle_grouping(){
     //int y_koko = floor(ALUE_Y / (2*PARTICLE_DIAMETER));
 
     vector<particle*> area_matrix[ALUE_X][ALUE_Y];
+
+    for (unsigned int j=0; j < particles_.at(TYPE_WALL).size(); ++j){
+
+
+        particle* p_Pointer = new particle{particles_.at(TYPE_WALL).at(j)};
+
+        particle_x_index = floor(((particles_.at(TYPE_WALL).at(j))).get_x() / group_width_ );
+
+        particle_y_index = floor(((particles_.at(TYPE_WALL).at(j))).get_y() / group_height_);
+
+        area_matrix[particle_x_index][particle_y_index].push_back(p_Pointer);
+
+        //cout << particle_x_index << " : " << particle_y_index << ": " << area_matrix[particle_x_index][particle_y_index].size() << endl;
+
+        //delete p_Pointer;
+    }
 
     for (unsigned int i=0; i < particles_.at(TYPE_WATER).size(); ++i){
 
@@ -176,8 +351,9 @@ Calculation_area::particle_grouping(){
 
         area_matrix[particle_x_index][particle_y_index].push_back(p_Pointer); // (particles_.at(TYPE_WATER).at(i))*
 
-        cout << particle_x_index << " : " << particle_y_index << ": " << area_matrix[particle_x_index][particle_y_index].size() << endl;
+        //cout << particle_x_index << " : " << particle_y_index << ": " << area_matrix[particle_x_index][particle_y_index].size() << endl;
 
-        delete p_Pointer;
+        //delete p_Pointer;
     }
+
 }
