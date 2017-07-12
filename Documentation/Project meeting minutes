@@ -26,3 +26,8 @@
 - Petri: Muistinvaraus partikkeleille toimii. 
 - Oskari: Tiheyden määrityksen selvitys
 - Mikko: Pälättää
+
+2017_07_12:
+- Veikko: Interfacen parannusta
+- Petri: Korjasi pointterit area_matrixissa calculation_area.cpp:ssä
+- Mikko: Pälättää
