@@ -23,6 +23,7 @@ public:
     void move_particles();                          //moves individual particle by updating it's location
     void boundary_conditions();                     //Erases particle if particle is out of boundary lines
     void particle_grouping();                       //Groups particles into an area of 2*diameter of the particle
+    void calculate_density();                       //Calculates the density of the particles
 
 private:
     int area_height_;
@@ -36,6 +37,8 @@ private:
     //vector<particle*> area_matrix[floor(ALUE_X / (2*PARTICLE_DIAMETER))][floor(ALUE_Y / (2*PARTICLE_DIAMETER))];
 
     map<int,vector<particle>> particles_;
+
+    vector<particle*> area_matrix[ALUE_X][ALUE_Y];
 };
 
 #endif // CALCULATION_AREA_HH

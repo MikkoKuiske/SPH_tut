@@ -308,7 +308,7 @@ Calculation_area::boundary_conditions(){
 #	...
 #
 #	to be done:
-#	- Aream matrix twice the size needed. Atm 70*70 -> could be 35*35
+#	- Area_matrix twice the size needed. Atm 70*70 -> could be 35*35
 #
 #------------------------------------------------
 */
@@ -322,7 +322,13 @@ Calculation_area::particle_grouping(){
     //int x_koko = floor(ALUE_X / (2*PARTICLE_DIAMETER));
     //int y_koko = floor(ALUE_Y / (2*PARTICLE_DIAMETER));
 
-    vector<particle*> area_matrix[ALUE_X][ALUE_Y];
+    //vector<particle*> area_matrix[ALUE_X][ALUE_Y];
+
+    for (unsigned int clear_x=0; clear_x < ALUE_X; ++clear_x){
+        for (unsigned int clear_y =0; clear_y < ALUE_Y; ++clear_y){
+            area_matrix[clear_x][clear_y].clear();
+        }
+    }
 
     for (unsigned int j=0; j < particles_.at(TYPE_WALL).size(); ++j){
 
@@ -354,6 +360,58 @@ Calculation_area::particle_grouping(){
         //cout << particle_x_index << " : " << particle_y_index << ": " << area_matrix[particle_x_index][particle_y_index].size() << endl;
 
         //delete p_Pointer;
+    }
+}
+
+/*
+#------------------------------------------------
+# <short overview of the function/script>
+#
+#	syntax: output1 = exampleFuntion(param1,param2)
+#
+#	input: 	param1:
+#		param2:
+#
+#	output: output1:
+#
+#	example: output1 = exampleFunction(param1,param2)
+#
+#	Copyright 2017 Your Name
+#	Version 0.1 by Your Name dd.mm.yyyy
+#	...
+#
+#	Change log:
+#	Version 0.1 dd.mm.yyyy Initial version
+#	...
+#
+#	to be done:
+#	-
+#
+#------------------------------------------------
+*/
+
+void
+Calculation_area::calculate_density(){
+    for (unsigned int x_grid_element = 0; x_grid_element < ALUE_X; ++x_grid_element){
+
+        for (unsigned int y_grid_element = 0; y_grid_element < ALUE_Y; ++y_grid_element){
+
+            for (unsigned int particle_num = 0; particle_num < area_matrix[x_grid_element][y_grid_element].size(); ++particle_num){
+
+                particle* com_particle = area_matrix[x_grid_element][y_grid_element].at(particle_num);
+
+                for (unsigned int i = x_grid_element - 1; i < x_grid_element + 2; ++i){
+                    for (unsigned int j = y_grid_element - 1; j < y_grid_element + 2; ++j){
+                        for (auto comparable_particle:area_matrix[i][j]){
+                            if (comparable_particle != com_particle){
+                                //Physics!!!!!!!
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
     }
 
 }
