@@ -50,23 +50,18 @@ class Interface:
         
         self.__header = Label(self.__main_window, text = "SPH")
         self.__header.config(font=("fixedsys", 32))
-        self.__header.pack()
         
         self.__makefile = Button(self.__main_window, text = "MAKE", 
                                  command=self.Makefile, width=10, height=2)
-        self.__makefile.pack()
 
         self.__runprogram = Button(self.__main_window, text = "RUN", 
                                    command=self.RunProgram, width=10, height=2)
-        self.__runprogram.pack()
         
         self.__plot_p = Button(self.__main_window, text = "PLOT",
                                        command=self.Plot, width=10, height=2)
-        self.__plot_p.pack()
         
         self.__exit_button = Button(self.__main_window, text="EXIT",
                                     command=self.Exit, width=10, height=2)
-        self.__exit_button.pack()
         
         try:
             plot_particles.filename
@@ -112,6 +107,7 @@ class Interface:
         def callback():
             plot_particles.main()
             self.__plot_p.config(state = 'normal')
+            
         t = Thread(target = callback())
         t.start()
 
