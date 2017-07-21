@@ -367,7 +367,14 @@ Calculation_area::particle_grouping(){
 #------------------------------------------------
 # <short overview of the function/script>
 #
-#	syntax: output1 = exampleFuntion(param1,param2)
+#	syntax: marco = comparable particle_1
+#               Particle that is fetched from
+#               grid.
+#           polo = comparable particle_2
+#               Particle that is fetched
+#               from the same grid element
+#               or surrounding elements.
+#   output1 = exampleFuntion(param1,param2)
 #
 #	input: 	param1:
 #		param2:
@@ -398,12 +405,24 @@ Calculation_area::calculate_density(){
 
             for (unsigned int particle_num = 0; particle_num < area_matrix[x_grid_element][y_grid_element].size(); ++particle_num){
 
-                particle* com_particle = area_matrix[x_grid_element][y_grid_element].at(particle_num);
+                particle* particle_marco = area_matrix[x_grid_element][y_grid_element].at(particle_num);
 
+                // Particle is compared to other particles that are within range of
+                // one grid element of it in any direction. Particle is also compared to other particles that are
+                // within the same grid element.
                 for (unsigned int i = x_grid_element - 1; i < x_grid_element + 2; ++i){
+                    if (i < 0 or i > ALUE_X){
+                       continue;
+                    }
                     for (unsigned int j = y_grid_element - 1; j < y_grid_element + 2; ++j){
-                        for (auto comparable_particle:area_matrix[i][j]){
-                            if (comparable_particle != com_particle){
+                        if (j < 0 or j > ALUE_Y){
+                           continue;
+                        }
+                        for (auto particle_polo:area_matrix[i][j]){
+                            // If the comparison is done to different particles
+                            // calculation proceeds. If particle is the same one
+                            // calculation is skipped.
+                            if (particle_polo != particle_marco){
                                 //Physics!!!!!!!
                             }
 
