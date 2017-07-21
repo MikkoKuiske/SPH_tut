@@ -69,7 +69,6 @@ class Interface:
         except:
             #self.__current_image = ImageTk.PhotoImage(self.__main_window, file='datafile0001.png')
             self.__current_image = Label(self.__main_window, text = "No images currrently available.")
-        self.__current_image.pack()
 
         self.__header.grid(column=0, row=0, columnspan=2, sticky='w'+'e')
         self.__makefile.grid(column=0, row=1)
