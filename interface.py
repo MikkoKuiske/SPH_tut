@@ -8,7 +8,7 @@
 #   output:   
 #
 #   Copyright 2017 Veikko Härö
-#   Version 0.3.2 by Veikko 31.05.2017
+#   Version 0.4 by Veikko 31.05.2017
 #   ...
 #
 #   Change log:
@@ -18,6 +18,7 @@
 #                         necessary
 #   Version 0.3.1 28.6.2017 Main Window put into grid, place for plotted pictures added.
 #   Version 0.3.2 12.7.2017 Added temporary disabling of used buttons and multithreading plot_particles(incomplete).
+#   Version 0.4 21.7.2017 Added update for main_window, when "PLOT" button is used.
 #	...
 #
 #	to be done: Add Windows compatilibity for "Make" and "Run" buttons, create config.ini with path and such, make status-bar,
@@ -88,8 +89,7 @@ class Interface:
             print("Calculation completed!")
         else:
             print("This feature can only be used on Windows or Linux platforms.")
-        
-        
+            
     def Makefile(self):
         if platform.system() == "Windows":
             print("Not implemented yet for Windows.")
@@ -107,14 +107,13 @@ class Interface:
             plot_particles.main()
             self.__plot_p.config(state = 'normal')
             
+        self.__main_window.update()
         t = Thread(target = callback())
         t.start()
-
-        
+      
     def Exit(self):
         self.__main_window.destroy()
         
-
 def main():
     multiprocessing.freeze_support()
     Interface()
