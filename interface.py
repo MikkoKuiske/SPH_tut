@@ -18,7 +18,7 @@
 #                         necessary
 #   Version 0.3.1 28.6.2017 Main Window put into grid, place for plotted pictures added.
 #   Version 0.3.2 12.7.2017 Added temporary disabling of used buttons and multithreading plot_particles(incomplete).
-#   Version 0.4 21.7.2017 Added update for main_window, when "PLOT" button is used. Added thread joining in the end of PLOT. Cosmetic changes.
+#   Version 0.4 21.7.2017 Added update for main_window, when "PLOT" button is used. Cosmetic changes.
 #	...
 #
 #	to be done: Add Windows compatilibity for "Make" and "Run" buttons, create config.ini with path and such, make status-bar,
@@ -118,7 +118,6 @@ class Interface:
         self.__main_window.update()
         t = Thread(target = callback())
         t.start()
-        t.join()
       
     def Exit(self):
         self.__main_window.destroy()
