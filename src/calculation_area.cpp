@@ -374,6 +374,9 @@ Calculation_area::particle_grouping(){
 #               Particle that is fetched
 #               from the same grid element
 #               or surrounding elements.
+#           temp_density = temporal variable
+#               for saving density of particles
+#
 #   output1 = exampleFuntion(param1,param2)
 #
 #	input: 	param1:
@@ -399,6 +402,11 @@ Calculation_area::particle_grouping(){
 
 void
 Calculation_area::calculate_density(){
+    double M_x = 0;
+    double x_h = 0;
+    double distance_between_particles = 0;
+    double temp_density = 0;
+
     for (unsigned int x_grid_element = 0; x_grid_element < ALUE_X; ++x_grid_element){
 
         for (unsigned int y_grid_element = 0; y_grid_element < ALUE_Y; ++y_grid_element){
@@ -424,6 +432,24 @@ Calculation_area::calculate_density(){
                             // calculation is skipped.
                             if (particle_polo != particle_marco){
                                 //Physics!!!!!!!
+                                distance_between_particles = sqrt(pow(particle_polo->get_x() - particle_marco->get_x(), 2) + pow(particle_polo->get_y() - particle_marco->get_y(), 2));
+                                x_h = distance_between_particles / PARTICLE_DIAMETER;
+                               
+                                if (x_h <= 1 or x_h >= 0) {
+                                    M_x = AUXILIARY_VARIABLE*(pow((2 - x_h), 3) - 4*(pow((1 - x_h), 3)));
+                                }
+                                else if (x_h <= 2 or x_h > 1) {
+                                    M_x = AUXILIARY_VARIABLE*(pow((2 - x_h), 3));
+                                }
+                                else if (x_h > 2){
+                                    M_x = 0;
+                                }
+
+                                temp_density = PARTICLE_MASS * (M_x / pow(PARTICLE_DIAMETER, 2));
+
+                                // JATKA TASTA!!!
+                                particle_polo->set_density(temp_density);
+
                             }
 
                         }

@@ -14,4 +14,9 @@ const double PARTICLE_DIAMETER = 1;
 const int TYPE_WATER = 200;
 const int TYPE_WALL = 100;
 
+const double PARTICLE_MASS = 1.0;
+
+const double PI = 3.1415926535897;
+const double AUXILIARY_VARIABLE = 15/(14*PI);
+
 #endif // PARAMETERS_HH

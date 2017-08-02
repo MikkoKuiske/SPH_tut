@@ -46,3 +46,8 @@ particle::move_particle(double nopeus_x, double nopeus_y, double aika) {
     y_pos_ += nopeus_y*aika;
 }
 
+void
+particle::set_density(double density) {
+    density_ = density;
+}
+
