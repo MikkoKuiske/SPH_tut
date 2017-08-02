@@ -1,0 +1,36 @@
+A software requirements specification (SRS) is a description of a software system to be developed. It lays out functional and non-functional requirements, and may include a set of use cases that describe user interactions that the software must provide.
+
+
+Purpose
+Definitions
+System overview[disambiguation needed]
+References
+
+Overall description
+	Product perspective
+		System Interfaces
+		User interfaces
+           	Hardware interfaces
+           	Software interfaces
+            	Communication Interfaces
+            	Memory Constraints
+        Design constraints
+            	Operations
+            	Site Adaptation Requirements
+        Product functions
+        User characteristics
+        Constraints, assumptions and dependencies
+
+Specific requirements
+        External interface requirements
+        Functional requirements
+        Performance requirements
+        Logical database requirement
+        Software System attributes
+            	Reliability
+            	Availability
+            	Security
+            	Maintainability
+            	Portability
+        others..
+
